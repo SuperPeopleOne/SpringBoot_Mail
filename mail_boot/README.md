@@ -1,0 +1,81 @@
+######Maven Build Project
+###### -mvn
+
+
+###★SpringBoot动态多数据源(多数据源自动切换)★
+####`示例网址`
+####`https://www.cnblogs.com/hehehaha/p/6147096.html`
+####`部分内容如下`
+```
+配置文件部分:application.properties
+#################################################################
+配置文件包括1个主数据源和多个数据源，
+其中主数据源在Spring中的beanName默认为dataSource，
+另外几个数据源的beanName分包为：ds1、ds2、ds3
+其中datasource的type属性可以具体指定到我们需要的数据源上面，
+不指定情况下默认为：org.apache.tomcat.jdbc.pool.DataSource
+当然也可以把这些数据源配置到主dataSource数据库中，然后读取数据库生成多数据源。
+当然这样做的必要性并不大，难不成数据源还会经常变吗。
+#################################################################
+
+# 主数据源，默认的
+#spring.datasource.type=com.zaxxer.hikari.HikariDataSource
+spring.datasource.driverClassName=com.mysql.jdbc.Driver
+spring.datasource.url=jdbc:mysql://Ip:Port/DataBaseName?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&useSSL=true
+spring.datasource.username=
+spring.datasource.password=
+
+#更多数据源
+custom.datasource.names=ds1,ds2,ds3
+
+#custom.datasource.ds1.type=com.zaxxer.hikari.HikariDataSource
+custom.datasource.ds1.driverClassName=com.mysql.jdbc.Driver
+custom.datasource.ds1.url=jdbc:mysql://Ip:Port/DataBaseName?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&useSSL=true
+custom.datasource.ds1.username=
+custom.datasource.ds1.password=
+
+#custom.datasource.ds2.type=com.zaxxer.hikari.HikariDataSource
+custom.datasource.ds2.driverClassName =com.mysql.jdbc.Driver
+custom.datasource.ds2.url=jdbc:mysql://Ip:Port/DataBaseName?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&useSSL=true
+custom.datasource.ds2.username=
+custom.datasource.ds2.password=
+
+#custom.datasource.ds3.type=com.zaxxer.hikari.HikariDataSource
+custom.datasource.ds3.driverClassName =com.mysql.jdbc.Driver
+custom.datasource.ds3.url=jdbc:mysql://Ip:Port/DataBaseName?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&useSSL=true
+custom.datasource.ds3.username=
+custom.datasource.ds3.password=
+
+# 下面为连接池的补充设置，应用到上面所有数据源中
+spring.datasource.maximum-pool-size=100
+spring.datasource.max-idle=10
+spring.datasource.max-wait=10000
+spring.datasource.min-idle=5
+spring.datasource.initial-size=5
+spring.datasource.validation-query=SELECT 1
+spring.datasource.test-on-borrow=false
+spring.datasource.test-while-idle=true
+spring.datasource.time-between-eviction-runs-millis=18800
+
+
+########################################################
+### Java Persistence Api
+########################################################
+
+# Specify the DBMS
+spring.jpa.database = MYSQL
+# Show or not log for each sql query
+spring.jpa.show-sql = true
+# Hibernate ddl auto (create, create-drop, update)
+spring.jpa.hibernate.ddl-auto = update
+# Naming strategy
+#[org.hibernate.cfg.ImprovedNamingStrategy  #org.hibernate.cfg.DefaultNamingStrategy]
+spring.jpa.hibernate.naming-strategy = org.hibernate.cfg.DefaultNamingStrategy
+# stripped before adding them to the entity manager)
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5Dialect`
+
+
+
+
+
+

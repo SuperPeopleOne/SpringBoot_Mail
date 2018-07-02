@@ -21,3 +21,13 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+#user-defined
+.idea/
+mail_boot/target
+mail_boot/idea
+mail_boot/mail_boot.iml
+mail_boot/mvnw
+mail_boot/mvnw.cmd
+mail_boot/.mvn
+
